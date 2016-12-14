@@ -1,0 +1,69 @@
+﻿@model IEnumerable<KrepsinioLyga.Models.Rungtynės>
+
+@{
+    ViewBag.Title = "Rungtynes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rungtynes</h2>
+
+<p>
+    @Html.ActionLink("Sukurti naują", "CreateGame")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Žiūrovai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pajamos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NTaškai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STaškai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arena1.Pavadinimas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Komanda.Miestas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Komanda1.Miestas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Žiūrovai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pajamos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NTaškai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STaškai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arena1.Pavadinimas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Komanda.Miestas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Komanda1.Miestas)
+        </td>
+        <td>
+            @Html.ActionLink("Redaguoti", "EditGame", new { id = item.Id }) |
+            @Html.ActionLink("Ištrinti", "DeleteGame", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

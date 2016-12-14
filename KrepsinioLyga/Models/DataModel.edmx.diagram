@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="be18ae0114cd407293bf9fdb63077af7" Name="Diagram1">
+        <EntityTypeShape EntityType="KrepsinioLygaModel.Arena" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KrepsinioLygaModel.Komanda" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KrepsinioLygaModel.Rungtynės" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KrepsinioLygaModel.Žaidėjas" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="KrepsinioLygaModel.FK_Rungtynės_Arena" ManuallyRouted="false" />
+        <AssociationConnector Association="KrepsinioLygaModel.FK_Rungtynės_Namai" ManuallyRouted="false" />
+        <AssociationConnector Association="KrepsinioLygaModel.FK_Rungtynės_Svečiai" ManuallyRouted="false" />
+        <AssociationConnector Association="KrepsinioLygaModel.FK_Žaidėjas_Komanda" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

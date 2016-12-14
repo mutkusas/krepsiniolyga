@@ -1,0 +1,45 @@
+﻿@model IEnumerable<KrepsinioLyga.Models.Komanda>
+
+@{
+    ViewBag.Title = "Komandos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Komandos</h2>
+
+<p>
+    @Html.ActionLink("Sukurti naują", "CreateTeam")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Miestas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pavadinimas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Biudžetas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Miestas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pavadinimas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Biudžetas)
+        </td>
+        <td>
+            @Html.ActionLink("Redaguoti", "EditTeam", new { id = item.Id }) |
+            @Html.ActionLink("Ištrinti", "DeleteTeam", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>

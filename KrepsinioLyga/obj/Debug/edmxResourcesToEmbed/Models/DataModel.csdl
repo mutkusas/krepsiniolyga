@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KrepsinioLygaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Arena">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pavadinimas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Talpa" Type="Int32" Nullable="false" />
+    <Property Name="Bilietas" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Rungtynės" Relationship="Self.FK_Rungtynės_Arena" FromRole="Arena" ToRole="Rungtynės" />
+  </EntityType>
+  <EntityType Name="Komanda">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Miestas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pavadinimas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Biudžetas" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Rungtynės" Relationship="Self.FK_Rungtynės_Namai" FromRole="Komanda" ToRole="Rungtynės" />
+    <NavigationProperty Name="Rungtynės1" Relationship="Self.FK_Rungtynės_Svečiai" FromRole="Komanda" ToRole="Rungtynės" />
+    <NavigationProperty Name="Žaidėjas" Relationship="Self.FK_Žaidėjas_Komanda" FromRole="Komanda" ToRole="Žaidėjas" />
+  </EntityType>
+  <EntityType Name="Rungtynės">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Arena" Type="Int32" Nullable="false" />
+    <Property Name="Žiūrovai" Type="Int32" Nullable="false" />
+    <Property Name="Pajamos" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Namai" Type="Int32" Nullable="false" />
+    <Property Name="Svečiai" Type="Int32" Nullable="false" />
+    <Property Name="NTaškai" Type="Int32" Nullable="false" />
+    <Property Name="STaškai" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Arena1" Relationship="Self.FK_Rungtynės_Arena" FromRole="Rungtynės" ToRole="Arena" />
+    <NavigationProperty Name="Komanda" Relationship="Self.FK_Rungtynės_Namai" FromRole="Rungtynės" ToRole="Komanda" />
+    <NavigationProperty Name="Komanda1" Relationship="Self.FK_Rungtynės_Svečiai" FromRole="Rungtynės" ToRole="Komanda" />
+  </EntityType>
+  <EntityType Name="Žaidėjas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Vardas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pavardė" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gimė" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Ūgis" Type="Int32" Nullable="false" />
+    <Property Name="Numeris" Type="Int32" />
+    <Property Name="Pozicija" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Atlyginimas" Type="Int32" />
+    <Property Name="Komanda" Type="Int32" />
+    <NavigationProperty Name="Komanda1" Relationship="Self.FK_Žaidėjas_Komanda" FromRole="Žaidėjas" ToRole="Komanda" />
+  </EntityType>
+  <Association Name="FK_Rungtynės_Arena">
+    <End Role="Arena" Type="Self.Arena" Multiplicity="1" />
+    <End Role="Rungtynės" Type="Self.Rungtynės" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arena">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rungtynės">
+        <PropertyRef Name="Arena" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rungtynės_Namai">
+    <End Role="Komanda" Type="Self.Komanda" Multiplicity="1" />
+    <End Role="Rungtynės" Type="Self.Rungtynės" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Komanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rungtynės">
+        <PropertyRef Name="Namai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rungtynės_Svečiai">
+    <End Role="Komanda" Type="Self.Komanda" Multiplicity="1" />
+    <End Role="Rungtynės" Type="Self.Rungtynės" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Komanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rungtynės">
+        <PropertyRef Name="Svečiai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Žaidėjas_Komanda">
+    <End Role="Komanda" Type="Self.Komanda" Multiplicity="0..1" />
+    <End Role="Žaidėjas" Type="Self.Žaidėjas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Komanda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Žaidėjas">
+        <PropertyRef Name="Komanda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LygaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Arena" EntityType="Self.Arena" />
+    <EntitySet Name="Komanda" EntityType="Self.Komanda" />
+    <EntitySet Name="Rungtynės" EntityType="Self.Rungtynės" />
+    <EntitySet Name="Žaidėjas" EntityType="Self.Žaidėjas" />
+    <AssociationSet Name="FK_Rungtynės_Arena" Association="Self.FK_Rungtynės_Arena">
+      <End Role="Arena" EntitySet="Arena" />
+      <End Role="Rungtynės" EntitySet="Rungtynės" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rungtynės_Namai" Association="Self.FK_Rungtynės_Namai">
+      <End Role="Komanda" EntitySet="Komanda" />
+      <End Role="Rungtynės" EntitySet="Rungtynės" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rungtynės_Svečiai" Association="Self.FK_Rungtynės_Svečiai">
+      <End Role="Komanda" EntitySet="Komanda" />
+      <End Role="Rungtynės" EntitySet="Rungtynės" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Žaidėjas_Komanda" Association="Self.FK_Žaidėjas_Komanda">
+      <End Role="Komanda" EntitySet="Komanda" />
+      <End Role="Žaidėjas" EntitySet="Žaidėjas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

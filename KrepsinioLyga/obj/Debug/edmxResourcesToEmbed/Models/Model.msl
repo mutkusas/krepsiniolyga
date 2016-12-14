@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="KrepsinioLyga">
+    <EntitySetMapping Name="Arena">
+      <EntityTypeMapping TypeName="Models.Arena">
+        <MappingFragment StoreEntitySet="Arena">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+          <ScalarProperty Name="Talpa" ColumnName="Talpa" />
+          <ScalarProperty Name="Bilietas" ColumnName="Bilietas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Komanda">
+      <EntityTypeMapping TypeName="Models.Komanda">
+        <MappingFragment StoreEntitySet="Komanda">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Miestas" ColumnName="Miestas" />
+          <ScalarProperty Name="Pavadinimas" ColumnName="Pavadinimas" />
+          <ScalarProperty Name="Biudžetas" ColumnName="Biudžetas" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rungtynės">
+      <EntityTypeMapping TypeName="Models.Rungtynės">
+        <MappingFragment StoreEntitySet="Rungtynės">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Arena" ColumnName="Arena" />
+          <ScalarProperty Name="Žiūrovai" ColumnName="Žiūrovai" />
+          <ScalarProperty Name="Pajamos" ColumnName="Pajamos" />
+          <ScalarProperty Name="Namai" ColumnName="Namai" />
+          <ScalarProperty Name="Svečiai" ColumnName="Svečiai" />
+          <ScalarProperty Name="NTaškai" ColumnName="NTaškai" />
+          <ScalarProperty Name="STaškai" ColumnName="STaškai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Žaidėjas">
+      <EntityTypeMapping TypeName="Models.Žaidėjas">
+        <MappingFragment StoreEntitySet="Žaidėjas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Vardas" ColumnName="Vardas" />
+          <ScalarProperty Name="Pavardė" ColumnName="Pavardė" />
+          <ScalarProperty Name="Gimė" ColumnName="Gimė" />
+          <ScalarProperty Name="Ūgis" ColumnName="Ūgis" />
+          <ScalarProperty Name="Numeris" ColumnName="Numeris" />
+          <ScalarProperty Name="Pozicija" ColumnName="Pozicija" />
+          <ScalarProperty Name="Atlyginimas" ColumnName="Atlyginimas" />
+          <ScalarProperty Name="Komanda" ColumnName="Komanda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,89 @@
+﻿@model KrepsinioLyga.Models.Žaidėjas
+
+@{
+    ViewBag.Title = "Ištrinti žaidėją";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ištrinti žaidėją</h2>
+
+<h3>Ar tikrai norite tai ištrinti?</h3>
+<div>
+    <h4>Žaidėjas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vardas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vardas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavardė)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pavardė)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gimė)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gimė)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ūgis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ūgis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Numeris)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numeris)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pozicija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pozicija)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Atlyginimas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Atlyginimas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Komanda1.Pavadinimas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Komanda1.Pavadinimas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ištrinti" class="btn btn-default" /> |
+            @Html.ActionLink("Grįžti į sąrašą", "Index")
+        </div>
+    }
+</div>

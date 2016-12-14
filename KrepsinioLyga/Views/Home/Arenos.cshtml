@@ -1,0 +1,45 @@
+﻿@model IEnumerable<KrepsinioLyga.Models.Arena>
+
+@{
+    ViewBag.Title = "Arenos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Arenos</h2>
+
+<p>
+    @Html.ActionLink("Sukurti naują", "CreateArena")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pavadinimas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Talpa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bilietas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pavadinimas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Talpa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bilietas)
+        </td>
+        <td>
+            @Html.ActionLink("Redaguoti", "EditArena", new { id=item.Id }) |
+            @Html.ActionLink("Ištrinti", "DeleteArena", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

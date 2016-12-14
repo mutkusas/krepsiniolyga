@@ -1,0 +1,48 @@
+﻿@model KrepsinioLyga.Models.Arena
+
+@{
+    ViewBag.Title = "Ištrinti areną";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ištrinti areną</h2>
+
+<h3>Ar tikrai norite ištrintį šią areną?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavadinimas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pavadinimas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Talpa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Talpa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bilietas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bilietas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ištrinti" class="btn btn-default" /> |
+            @Html.ActionLink("Grįžti į sąrašą", "Index")
+        </div>
+    }
+</div>

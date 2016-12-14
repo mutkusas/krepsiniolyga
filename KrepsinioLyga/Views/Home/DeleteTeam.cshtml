@@ -1,0 +1,49 @@
+﻿@model KrepsinioLyga.Models.Komanda
+
+@{
+    ViewBag.Title = "Ištrinti komandą";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ištrinti komandą</h2>
+
+<h3>Ar tikrai norite tai ištrinti?</h3>
+<div>
+    <h4>Komanda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Miestas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Miestas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pavadinimas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pavadinimas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Biudžetas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biudžetas)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ištrinti" class="btn btn-default" /> |
+            @Html.ActionLink("Grįžti į sąrašą", "Komandos")
+        </div>
+    }
+</div>
