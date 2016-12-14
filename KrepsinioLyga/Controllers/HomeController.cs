@@ -1,6 +1,9 @@
 ﻿using KrepsinioLyga.Models;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -10,7 +13,11 @@ namespace KrepsinioLyga.Controllers
 {
     public class HomeController : Controller
     {
+        DataSet ds = new DataSet();
+
         private LygaEntities _entities = new LygaEntities();
+        private DataTable dataTable;
+
         public ActionResult Index()
         {
             return View();
@@ -21,6 +28,47 @@ namespace KrepsinioLyga.Controllers
             ViewBag.Message = "Informacija apie komandas.";
 
             return View(_entities.Komanda.ToList());
+        }
+
+        public ActionResult Arenos2()
+        {
+            DataTable table = GetDataTable();
+
+            return View(table);
+        }
+
+        public ActionResult ChangeCapacity()
+        {
+            SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;" + "Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            connection.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.UpdateCommand = new SqlCommand(
+           "UPDATE Arena SET Talpa = 5000 " +
+           "WHERE Id = 1", connection);
+            return View("Arenos");
+        }
+
+        public ActionResult DeleteRamtadrylia()
+        {
+            SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;" + "Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            connection.Open();
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.UpdateCommand = new SqlCommand(
+           "DELETE Arena where Pavadinimas = 'Ramtadrylia' ", connection);
+            return View("Index");
+        }
+
+        public DataTable GetDataTable()
+        {
+            SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;" + "Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework");
+            conn.Open();
+            string query = "SELECT * FROM [Arena]";
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            DataTable dt = new DataTable();
+            dt.TableName = "Arena";
+            dt.Load(cmd.ExecuteReader());
+            return dt;
         }
 
         public ActionResult Arenos()

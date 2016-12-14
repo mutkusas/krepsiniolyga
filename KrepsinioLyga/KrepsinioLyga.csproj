@@ -297,6 +297,8 @@
     <Content Include="Views\Home\EditTeam.cshtml" />
     <Content Include="Views\Home\EditGame.cshtml" />
     <Content Include="Views\Home\EditPlayer.cshtml" />
+    <Content Include="Views\Home\Arenos2.cshtml" />
+    <None Include="Views\Home\DeleteCido.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

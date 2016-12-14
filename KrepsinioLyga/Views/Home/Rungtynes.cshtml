@@ -25,13 +25,13 @@
             @Html.DisplayNameFor(model => model.STaškai)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Arena1.Pavadinimas)
+            Arena
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Komanda.Miestas)
+            Namų komanda
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Komanda1.Miestas)
+            Svečių komanda
         </th>
         <th></th>
     </tr>
@@ -54,10 +54,10 @@
             @Html.DisplayFor(modelItem => item.Arena1.Pavadinimas)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Komanda.Miestas)
+            @Html.DisplayFor(modelItem => item.Komanda.Pavadinimas)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Komanda1.Miestas)
+            @Html.DisplayFor(modelItem => item.Komanda1.Pavadinimas)
         </td>
         <td>
             @Html.ActionLink("Redaguoti", "EditGame", new { id = item.Id }) |

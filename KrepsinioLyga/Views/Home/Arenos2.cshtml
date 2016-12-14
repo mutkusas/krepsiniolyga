@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Komandos2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Komandos2</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <%foreach (System.Data.DataColumn col in Model.Columns) { %>
+            <th><%=col.Caption %></th>
+            <%} %>
+        </tr>
+    </thead>
+    <tbody>
+        <% foreach(System.Data.DataRow row in Model.Rows) { %>
+        <tr>
+            <% foreach (var cell in row.ItemArray) {%>
+            <td><%=cell.ToString() %></td>
+            <%} %>
+        </tr>
+        <%} %>
+    </tbody>
+</table>
+
